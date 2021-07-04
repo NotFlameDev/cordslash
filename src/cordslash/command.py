@@ -94,17 +94,15 @@ class Command:
             "str": 3,
             "int": 4,
             "bool": 5,
-            "src.cordslash.models.User": 6,
-            "src.cordslash.models.Channel": 7,
-            "src.cordslash.models.Mentionable": 8,
+            "cordslash.models.User": 6,
+            "cordslash.models.Channel": 7,
+            "cordslash.models.Mentionable": 8,
         }
         
         for param in params.parameters:
             parameter = params.parameters[param]
             annotation = str(parameter).split(": ")
-            print(annotation)
             if annotation[1] in _types:
-                print('a')
                 option = cls(
                     type=_types[annotation[1]],
                     name=annotation[0],

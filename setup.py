@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="cordslash",
-    version="0.1.1",
+    version="0.1.3",
     author="an-dyy",
     author_email="yrisxl@gmail.com",
     description="A small slash commands wrapper for discord",
