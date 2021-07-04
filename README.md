@@ -1,4 +1,4 @@
-# Slice
+# Cordslash
 cordslash is a *WIP* discord slash commands wrapper, that is built on the [corded](https://github.com/vcokltfre/Corded) framework by vcokltfre.
 Expect more changes/features to be added in the future, currently undocumented but will be soon
 *PR's are welcome*
