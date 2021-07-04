@@ -40,8 +40,9 @@ class Context:
 
     async def invoke(self):
         args = [self]
-        for option in self.data["options"]:
-            args.append(option["value"])
+        if self.data['options']:
+            for option in self.data["options"]:
+                args.append(option["value"])
 
         ret = await self.command.callback(*args)
         return ret
