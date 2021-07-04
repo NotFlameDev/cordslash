@@ -1,0 +1,3 @@
+dist/
+poetry.lock
+src/slice.egg-info
