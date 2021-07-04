@@ -17,7 +17,7 @@ intents.guild_members = True
 bot = cordClient(token="BOT_TOKEN", app_id=BOT_ID, intents=intents)
 
 @bot.command(name="wave", guild_ids=[12345678910], description="Say hello to a user")
-async def wave(ctx: Context, user: User) -> None:
+async def wave(ctx: cordslash.Context, user: cordslash.User) -> None:
     await ctx.send(f":wave: <@{user}>!")
 
 bot.start()
