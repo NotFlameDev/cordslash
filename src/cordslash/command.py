@@ -98,7 +98,7 @@ class Command:
             "cordslash.models.Channel": 7,
             "cordslash.models.Mentionable": 8,
         }
-        
+
         for param in params.parameters:
             parameter = params.parameters[param]
             annotation = str(parameter).split(": ")
@@ -140,4 +140,5 @@ class Command:
             data = await self._bot.http.session.request(
                 "POST", self._bot.http.url + route, json=payload, headers=self._header
             )
+
     # TODO: delete, get etc

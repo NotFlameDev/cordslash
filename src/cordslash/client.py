@@ -39,7 +39,15 @@ class FakeEvent(c.GatewayEvent):
 
 
 class cordClient(c.CordedClient):
-    def __init__(self, /, token: str, app_id: int, intents: Union[c.Intents, int] = 0, *args, **kwargs):
+    def __init__(
+        self,
+        /,
+        token: str,
+        app_id: int,
+        intents: Union[c.Intents, int] = 0,
+        *args,
+        **kwargs,
+    ):
         super().__init__(token, intents, *args, **kwargs)
         self.gateway.listeners["interaction_create"].append(self.on_interaction_create)
         self.gateway.listeners["ready"].append(self._set_ready)

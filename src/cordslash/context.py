@@ -24,7 +24,9 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 __all__ = "Context"
 
 from corded import Route
-from .models import User, Channel, Mentionable
+from .models import User, Channel, Mentionable, Embed
+
+from typing import Optional, List
 
 
 class Context:
@@ -40,15 +42,22 @@ class Context:
 
     async def invoke(self):
         args = [self]
-        if self.data['options']:
-            for option in self.data["options"]:
-                args.append(option["value"])
+        try:
+            if self.data["options"]:
+                for option in self.data["options"]:
+                    args.append(option["value"])
+        except KeyError:
+            pass
 
         ret = await self.command.callback(*args)
         return ret
 
-    async def send(self, content):
+    async def send(self, content: str, embeds: Optional[List[Embed]] = None):
         payload = {"type": 4, "data": {"content": content}}
+        
+        if embeds:
+            payload['data']["embeds"] = [embed._to_dict() for embed in embeds]
+            
         route = Route(
             "/interactions/{id}/{token}/callback", id=self.id, token=self.token
         )
