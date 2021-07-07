@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import re
 from typing import Optional, Callable, List, Dict, Union
+import aiohttp
 
 __all__ = "cordClient"
 
