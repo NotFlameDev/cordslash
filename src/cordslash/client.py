@@ -55,12 +55,20 @@ class cordClient(c.CordedClient):
         self.commands: Dict[str, Command] = {}
         self.token = token
         self.app_id = app_id
+        if not self.app_id:
+            self.app_id = self.loop.run_until_complete(self._get_app_id())
         self._ready = 0
 
     async def _set_ready(self, ev):
         ev = FakeEvent("_register_commands")
         self._ready += 1
         await self.gateway.dispatch(ev)
+
+    async def _get_app_id(self):
+        async with aiohttp.ClientSession() as s:
+            async with s.request("GET", self.http.url + "/users/@me", headers = {"Authorization": f"Bot {self.token}"}) as r:
+                a = await r.json()
+        return a["id"]
 
     def command(
         self,
