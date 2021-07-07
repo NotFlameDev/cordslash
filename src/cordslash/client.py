@@ -44,7 +44,7 @@ class cordClient(c.CordedClient):
         self,
         /,
         token: str,
-        app_id: int,
+        app_id: int = None,
         intents: Union[c.Intents, int] = 0,
         *args,
         **kwargs,
